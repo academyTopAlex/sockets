@@ -32,8 +32,10 @@ message = ""
 # print(pickle.loads(data))
 
 # requests = b"GET123 / HTTP/1.1\r\nHost:localhost:9999\r\n\r\n"
-requests = b"eeddfdf"
-
+# requests = b"eeddfdf"
+with open("1.jpg", "rb") as f:
+    requests = f.read()
+print(requests)
 
 
 client.sendall(requests)

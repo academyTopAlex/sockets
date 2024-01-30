@@ -29,18 +29,30 @@ user = {str(i): i for i in range(1000)}
 Задача "Передача файлов":
 Напишите программу, которая позволяет клиенту загружать файлы на сервер через сокеты.
 """
+
+
+def save_img(b):
+    with open("2.jpg", "wb") as f:
+        f.write(b)
+
+
 while True:
     client, address = s.accept()
     print("connected - ", address)
 
-    req = ''
+    req = b''
     while True:
         data = client.recv(1024)
         if not len(data):
             break
-        req += data.decode()
-    print(req)
+        req += data
+    save_img(req)
     client.close()
 
-with open("path", "r") as f:
-    s = f.read().encode("utf-8")
+"""
+Задача "Чат-сервер":
+Реализуйте простой чат-сервер, который позволяет нескольким клиентам обмениваться сообщениями. 
+Каждый клиент должен подключаться к серверу через сокет и отправлять сообщения, которые будут видны 
+всем остальным клиентам.
+"""
+
